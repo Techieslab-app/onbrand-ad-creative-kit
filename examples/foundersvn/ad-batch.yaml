@@ -1,0 +1,18 @@
+campaign:
+  name: foundersvn-danang
+  offer: Private networking dinner for founders and business owners
+  mandatory_detail_line: "July 31 · Da Nang · FOR YOU SteakHouse"
+
+ratios:
+  - id: 1x1
+    size: 1080x1080
+  - id: 4x5
+    size: 1080x1350
+  - id: 9x16
+    size: 1080x1920
+  - id: 16x9
+    size: 1920x1080
+
+outputs:
+  folder: outputs
+  naming: "{campaign}-{hook_id}-{slug}-{ratio}.png"

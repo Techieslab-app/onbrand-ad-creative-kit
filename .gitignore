@@ -1,0 +1,9 @@
+.DS_Store
+*.zip
+outputs/**/*.png
+outputs/**/*.jpg
+outputs/**/*.jpeg
+outputs/**/*.webp
+tmp/
+__pycache__/
+*.pyc

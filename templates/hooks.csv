@@ -1,0 +1,3 @@
+id,persona,angle,headline,support,cta,offer_notes,language,reference_image,layout_hint,priority,status
+H01,Persona 1,Primary pain point,Headline goes here,Support copy goes here,Apply now,Offer note,en,inputs/media/reference-1.jpg,center-stack,1,approved
+H02,Persona 1,Better alternative,Second headline goes here,Second support copy goes here,Learn more,Offer note,en,inputs/media/reference-2.jpg,soft-split,2,draft

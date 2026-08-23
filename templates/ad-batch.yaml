@@ -1,0 +1,24 @@
+campaign:
+  name: campaign-name
+  offer: short offer
+  mandatory_detail_line: ""
+
+ratios:
+  - id: 1x1
+    size: 1080x1080
+  - id: 4x5
+    size: 1080x1350
+  - id: 9x16
+    size: 1080x1920
+
+generation:
+  hooks_source: inputs/hooks/hooks.csv
+  brand_source: inputs/brand/brand.md
+  tokens_source: inputs/brand/tokens.json
+  rules_source: inputs/design-rules/rules.md
+  media_folder: inputs/media
+  final_assets_must_use_imagegen: true
+
+outputs:
+  folder: outputs
+  naming: "{campaign}-{hook_id}-{slug}-{ratio}.png"
