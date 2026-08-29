@@ -176,7 +176,17 @@ Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale
 
 ### Lovable output preview
 
-Public brand signals in, generated ad bundle out:
+Public brand signals in, generated ad bundle out.
+
+| Input role | Lovable demo value |
+|---|---|
+| Logo / reference | `examples/lovable/inputs/media/lovable-opengraph.png` |
+| Colours | `#FCFBF8` background, `#272725` text, `#1E52F1` blue, `#F3702F` coral, `#EA8AAB` pink, `#FFFFFF` surfaces |
+| Type direction | friendly rounded geometric sans, 0 letter spacing, bold but not heavy headlines |
+| CTA | `Start building`, blue rounded rectangle, white text |
+| Visual world | clean product UI, chat-to-app transformation, warm light background, subtle shadows |
+| Hard avoids | robots, dark cyberpunk, fake code rain, crypto motifs, stock people, unrelated logos |
+| Known limitation | generated UI is draft-only unless approved product screenshots are supplied |
 
 ![Lovable founder ad: Your idea can be an app today](examples/lovable/outputs/1x1/lovable-public-brand-test-l04-your-idea-can-be-an-app-today-1x1.png)
 

@@ -28,6 +28,18 @@ behalf of Lovable without approval.
 - `inputs/media/lovable-opengraph.png` — public visual reference from the
   Lovable website.
 
+## Input Snapshot
+
+| Input role | Demo value |
+|---|---|
+| Logo / reference | `inputs/media/lovable-opengraph.png` |
+| Colours | `#FCFBF8` background, `#272725` text, `#1E52F1` blue, `#F3702F` coral, `#EA8AAB` pink, `#FFFFFF` surfaces |
+| Type direction | friendly rounded geometric sans, 0 letter spacing, bold but not heavy headlines |
+| CTA | `Start building`, blue rounded rectangle, white text |
+| Visual world | clean product UI, chat-to-app transformation, warm light background, subtle shadows |
+| Hard avoids | robots, dark cyberpunk, fake code rain, crypto motifs, stock people, unrelated logos |
+| Product UI mode | draft generated UI; use approved screenshots for production |
+
 ## Included Outputs
 
 - `outputs/1x1/` — four square ad samples across founder, PM, and marketer
