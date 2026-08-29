@@ -176,15 +176,49 @@ Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale
 
 Public brand signals in, generated ad bundle out.
 
-| Input role | Lovable demo value |
-|---|---|
-| Logo / reference | `examples/lovable/inputs/media/lovable-opengraph.png` |
-| Colours | `#FCFBF8` background, `#272725` text, `#1E52F1` blue, `#F3702F` coral, `#EA8AAB` pink, `#FFFFFF` surfaces |
-| Type direction | friendly rounded geometric sans, 0 letter spacing, bold but not heavy headlines |
-| CTA | `Start building`, blue rounded rectangle, white text |
-| Visual world | clean product UI, chat-to-app transformation, warm light background, subtle shadows |
-| Hard avoids | robots, dark cyberpunk, fake code rain, crypto motifs, stock people, unrelated logos |
-| Known limitation | generated UI is draft-only unless approved product screenshots are supplied |
+<table>
+  <tr>
+    <td width="38%">
+      <strong>Input logo / reference</strong><br />
+      <sub><code>examples/lovable/inputs/media/lovable-opengraph.png</code></sub><br /><br />
+      <img src="examples/lovable/inputs/media/lovable-opengraph.png" alt="Lovable public brand reference input" />
+    </td>
+    <td width="62%">
+      <strong>Input brand tokens</strong><br /><br />
+      <table>
+        <tr>
+          <td><code>#FCFBF8</code><br /><sub>background</sub></td>
+          <td bgcolor="#FCFBF8" width="90"></td>
+        </tr>
+        <tr>
+          <td><code>#272725</code><br /><sub>text</sub></td>
+          <td bgcolor="#272725" width="90"></td>
+        </tr>
+        <tr>
+          <td><code>#1E52F1</code><br /><sub>primary blue / CTA</sub></td>
+          <td bgcolor="#1E52F1" width="90"></td>
+        </tr>
+        <tr>
+          <td><code>#F3702F</code><br /><sub>coral accent</sub></td>
+          <td bgcolor="#F3702F" width="90"></td>
+        </tr>
+        <tr>
+          <td><code>#EA8AAB</code><br /><sub>pink accent</sub></td>
+          <td bgcolor="#EA8AAB" width="90"></td>
+        </tr>
+        <tr>
+          <td><code>#FFFFFF</code><br /><sub>surface</sub></td>
+          <td bgcolor="#FFFFFF" width="90"></td>
+        </tr>
+      </table>
+      <br />
+      <strong>Rules:</strong> friendly rounded sans, 0 letter spacing, clean product UI,
+      chat-to-app transformation, warm light background, blue <code>Start building</code> CTA.
+      Avoid robots, dark cyberpunk, fake code rain, crypto motifs, stock people, and unrelated logos.
+      Generated UI is draft-only unless approved screenshots are supplied.
+    </td>
+  </tr>
+</table>
 
 <table>
   <tr>
