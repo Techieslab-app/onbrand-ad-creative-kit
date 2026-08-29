@@ -102,9 +102,7 @@ Package validation passed. Checked 150 PNG output files.
 
 Then review against [`templates/qa-checklist.md`](templates/qa-checklist.md).
 
-> **Not sure where to start?** [`examples/foundersvn/`](examples/foundersvn/) is a complete real campaign — a private founders' dinner in Da Nang, bilingual VN/EN hooks, four ratios. Read it before you write your own.
-
-> **Want to see generated outputs first?** [`examples/lovable/`](examples/lovable/) is a public-brand simulation: lightweight Lovable inputs, six generated PNG ads, embedded previews, and QA notes about what stayed stable and what drifted.
+> **Not sure where to start?** [`examples/lovable/`](examples/lovable/) is a public-brand simulation: lightweight Lovable inputs, six generated PNG ads, embedded previews, and QA notes about what stayed stable and what drifted. Read it before you write your own.
 
 ## The input contract
 
@@ -172,7 +170,6 @@ Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale
 
 | Example | What to look at |
 |---|---|
-| [`examples/foundersvn/`](examples/foundersvn/) | A complete real campaign input set: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
 | [`examples/lovable/`](examples/lovable/) | A public-brand simulation with input brand files, embedded sample images, generated outputs, and QA notes. Good for checking whether the workflow feels stable before using your own brand. |
 
 ### Lovable output preview
@@ -251,7 +248,6 @@ This kit is the tooling layer of a pattern Techies Lab keeps finding in teardown
 | [Shelf](https://techieslab.app/playbook-shelf) | Eight ambassador accounts on one audience, each running a different angle on the same product truth — the angle lock, applied to seeding. |
 | [Codex for Marketing](https://techieslab.app/playbook-codex-marketing) | Where an agent like Codex actually fits in a marketing workflow, and where it does not. |
 | [once.film](https://techieslab.app/playbook-once-film) | Instagram-first placement — why the ratio set is a strategy decision, not an export setting. |
-| [`examples/foundersvn/`](examples/foundersvn/) | A real campaign run through this kit: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
 | [`examples/lovable/`](examples/lovable/) | A public-brand simulation showing the kit's draft quality, plus the exact place generated UI content still drifts without approved screenshots. |
 
 All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-playbooks)
