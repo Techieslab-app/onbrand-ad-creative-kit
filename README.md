@@ -1,6 +1,6 @@
 <div align="center">
 
-# OnBrand Ad Creative Kit
+# OnBrand Ad Creative Kit 👾
 
 **One brand system in. 150 on-brand ad creatives out. One Codex run.**
 
