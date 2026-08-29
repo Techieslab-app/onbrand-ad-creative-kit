@@ -253,8 +253,10 @@ All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-p
 
 ## About Techies Lab
 
-[Techies Lab](https://techieslab.app/) is an AI-native marketing consultancy — consultancy, tooling, and execution — for product-led teams who want less repetitive marketing work and more leverage. This repo is one of the tooling pieces, published as-is.
+[Techies Lab](https://techieslab.app/) started as a community — a cross-discipline tech community across Vietnam and SEA (finance, logistics, design, marketing, code), built on the idea that your background is an advantage, not a gap to close. The consultancy and tooling side, this repo included, grew out of that community rather than the other way around.
 
 **Join the community:** [Discord](https://discord.gg/q5qkMCAaet)
+
+Services, case studies, and market playbooks: [techieslab.app](https://techieslab.app/)
 
 Questions or a campaign you want run: `yolo@techieslab.app`
