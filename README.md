@@ -188,13 +188,32 @@ Public brand signals in, generated ad bundle out.
 | Hard avoids | robots, dark cyberpunk, fake code rain, crypto motifs, stock people, unrelated logos |
 | Known limitation | generated UI is draft-only unless approved product screenshots are supplied |
 
-![Lovable founder ad: Your idea can be an app today](examples/lovable/outputs/1x1/lovable-public-brand-test-l04-your-idea-can-be-an-app-today-1x1.png)
-
-![Lovable PM ad: Turn specs into working tools](examples/lovable/outputs/1x1/lovable-public-brand-test-l02-turn-specs-into-working-tools-1x1.png)
-
-![Lovable 4x5 portrait feed ad](examples/lovable/outputs/4x5/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-4x5.png)
-
-![Lovable 9x16 story ad](examples/lovable/outputs/9x16/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-9x16.png)
+<table>
+  <tr>
+    <td width="50%">
+      <img src="examples/lovable/outputs/1x1/lovable-public-brand-test-l04-your-idea-can-be-an-app-today-1x1.png" alt="Lovable founder ad: Your idea can be an app today" />
+    </td>
+    <td width="50%">
+      <img src="examples/lovable/outputs/1x1/lovable-public-brand-test-l02-turn-specs-into-working-tools-1x1.png" alt="Lovable PM ad: Turn specs into working tools" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Founder angle, 1:1</sub></td>
+    <td align="center"><sub>PM angle, 1:1</sub></td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="examples/lovable/outputs/4x5/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-4x5.png" alt="Lovable 4x5 portrait feed ad" />
+    </td>
+    <td width="50%">
+      <img src="examples/lovable/outputs/9x16/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-9x16.png" alt="Lovable 9x16 story ad" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Feed portrait, 4:5</sub></td>
+    <td align="center"><sub>Story / reel, 9:16</sub></td>
+  </tr>
+</table>
 
 See the full demo, inputs, prompts, and QA notes in [`examples/lovable/`](examples/lovable/).
 
