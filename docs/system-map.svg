@@ -52,6 +52,7 @@
 <rect x="0" y="0" width="1200" height="600" rx="10" fill="#FFFFFF"/>
 <text class="st" fill="#18181B" font-size="26" font-weight="400" x="40" y="50" style="animation:pop 0.55s cubic-bezier(.2,0,.2,1) 0.1s both">input</text>
 <text class="st" fill="#18181B" font-size="26" font-weight="400" x="580" y="50" style="animation:pop 0.55s cubic-bezier(.2,0,.2,1) 3.1s both">output — ads creatives</text>
+<text class="cntl" fill="#71717A" font-size="9.5" font-weight="700" letter-spacing="1.3" x="580" y="72" style="animation:pop 0.55s cubic-bezier(.2,0,.2,1) 3.3s both">rendered by Codex's own image generation tool</text>
 <text class="cnt" fill="#18181B" font-size="34" font-weight="700" x="1160" y="52" text-anchor="end" opacity="0" style="animation:flash 1.5s ease 3.4s both">0</text>
 <text class="cnt" fill="#18181B" font-size="34" font-weight="700" x="1160" y="52" text-anchor="end" opacity="0" style="animation:flash 1.5s ease 5.0s both">50</text>
 <text class="cnt" fill="#18181B" font-size="34" font-weight="700" x="1160" y="52" text-anchor="end" opacity="0" style="animation:flash 1.5s ease 6.2s both">100</text>

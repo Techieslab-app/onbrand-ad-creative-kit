@@ -135,6 +135,7 @@ svg.d{position:absolute;inset:0;width:1600px;height:900px;overflow:visible}
 
   <text class="st t-in"  x="130" y="118">input</text>
   <text class="st t-out" x="884" y="118">output — ads creatives</text>
+  <text class="note n-out" x="884" y="146">rendered by Codex's own image generation tool</text>
 
   <text class="big cnt"  x="1520" y="120" text-anchor="end">0</text>
   <text class="bigl cntl" x="1520" y="146" text-anchor="end">creatives · one run</text>
@@ -319,7 +320,7 @@ svg.d{position:absolute;inset:0;width:1600px;height:900px;overflow:visible}
     at(3600, () => { on('.i2'); pkt('.i2', { dur: 800 }); });
     at(3900, () => { on('.i3'); pkt('.i3', { dur: 900 }); });
 
-    at(4700, () => on('.t-out'));
+    at(4700, () => { on('.t-out'); on('.n-out'); });
     at(4900, () => { on('.f1'); pkt('.f1', { dur: 700 }); });
     at(5050, () => { on('.f2'); pkt('.f2', { dur: 700 }); });
     at(5200, () => { on('.f3'); pkt('.f3', { dur: 800 }); });

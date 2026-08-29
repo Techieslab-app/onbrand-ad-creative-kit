@@ -2,13 +2,15 @@
 
 # OnBrand Ad Creative Kit
 
-**One brand system in. 150 on-brand ad creatives out. One run.**
+**One brand system in. 150 on-brand ad creatives out. One Codex run.**
 
 Not 150 ideas — one creative concept, locked to your brand system,
-multiplied across angles and canvases by an image model.
+multiplied across angles and canvases. The skill writes the prompt plan;
+Codex's own image generation tool renders it — there is no separate
+image-model account to wire up.
 
-[Deploy in 5 minutes](#deploy-in-5-minutes) ·
 [What you need](#what-you-need-before-you-deploy) ·
+[Deploy in 5 minutes](#deploy-in-5-minutes) ·
 [The input contract](#the-input-contract) ·
 [Examples](#examples) ·
 [Seen in the wild](#seen-in-the-wild) ·
@@ -16,7 +18,17 @@ multiplied across angles and canvases by an image model.
 
 </div>
 
-![How the kit works: three input files feed the ad-creative-recipe skill, which produces 150 on-brand creatives across 1:1, 4:5 and 9:16](docs/system-map.svg)
+## What you need before you deploy
+
+| Requirement | Why | Check |
+|---|---|---|
+| **Codex CLI**, with its image generation tool available | reads the six inputs, writes the prompt plan, and renders the creatives — one tool, not a separate image-model integration | `codex --version` |
+| **Python 3** | runs the output validator | `python3 --version` |
+| **Your brand files** | logo, colour/type tokens, design rules, hooks | see [the input contract](#the-input-contract) |
+
+No other dependencies. The validator uses the Python standard library only.
+
+![How the kit works: three input files feed the ad-creative-recipe skill running in Codex, which writes a locked, ratio-aware prompt plan and renders it with Codex's own image generation tool into 150 on-brand ad creatives across 1:1, 4:5 and 9:16](docs/system-map.svg)
 
 <sub>Interactive version: open [`docs/index.html`](docs/index.html) in a browser — same diagram, running.</sub>
 
@@ -26,7 +38,7 @@ multiplied across angles and canvases by an image model.
 
 Generating one ad with AI is easy. Generating **fifty** that a brand lead will actually sign off on is not — because every prompt drifts a little, and fifty small drifts is a batch nobody can ship.
 
-This kit removes the drift. You describe the brand once, in files. Every creative in every batch after that is generated from those same files, in the same order, by the same skill. The output stops depending on how you happened to phrase the prompt that day.
+This kit removes the drift. You describe the brand once, in files. Every creative in every batch after that is generated from those same files, in the same order, by the same skill, and rendered by Codex's own image generation tool. The output stops depending on how you happened to phrase the prompt that day.
 
 **The unit of work becomes the batch, not the asset.**
 
@@ -41,17 +53,6 @@ This kit removes the drift. You describe the brand once, in files. Every creativ
 | **Naming** | `final_v3_REAL.png` | `{campaign}-{hook_id}-{slug}-{ratio}.png` |
 | **"Which angle won?"** | unanswerable | joinable — the hook id is in every filename |
 | **QA** | eyeball 150 files | a script checks dimensions; you check the 7 things it can't |
-
-## What you need before you deploy
-
-| Requirement | Why | Check |
-|---|---|---|
-| **Codex CLI** (or any agent that loads skills) | it reads the six inputs and writes the prompt plan | `codex --version` |
-| **An image generation model** | final assets are raster output, never HTML/SVG/canvas | your provider's API key |
-| **Python 3** | runs the output validator | `python3 --version` |
-| **Your brand files** | logo, colour/type tokens, design rules, hooks | see [the input contract](#the-input-contract) |
-
-No dependencies to install. The validator uses the Python standard library only.
 
 ## Deploy in 5 minutes
 
@@ -87,7 +88,7 @@ cp templates/ad-batch.yaml     inputs/ad-batch.yaml
 Use the ad-creative-recipe skill in this repo to generate a prompt plan for this batch.
 ```
 
-You get one prompt per hook per ratio — each carrying the exact size, the exact copy, the approved logo path, the reference image, the brand constraints, the safe-zone rules, and the output filename. Generate the images, save them under `outputs/<ratio>/`.
+You get one prompt per hook per ratio — each carrying the exact size, the exact copy, the approved logo path, the reference image, the brand constraints, the safe-zone rules, and the output filename. Then ask Codex to render the plan — its image generation tool produces the PNGs — and save them under `outputs/<ratio>/`.
 
 **5. Validate**
 
@@ -259,6 +260,6 @@ All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-p
 
 [Techies Lab](https://techieslab.app/) is an AI-native marketing consultancy — consultancy, tooling, and execution — for product-led teams who want less repetitive marketing work and more leverage. This repo is one of the tooling pieces, published as-is.
 
-**Join the community:** [techieslab.app/community](https://techieslab.app/community#community)
+**Join the community:** [Discord](https://discord.gg/q5qkMCAaet)
 
 Questions or a campaign you want run: `yolo@techieslab.app`
