@@ -14,6 +14,10 @@ The inputs are intentionally lightweight. They are based on public Lovable brand
 signals and are suitable for testing the workflow, not for production use on
 behalf of Lovable without approval.
 
+**Interactive walkthrough:** open [`walkthrough.html`](walkthrough.html) in a browser — the
+same input → skill → Codex pipeline as the main README, but animated with the real
+generated creatives below and the stable-vs-drifted verdict from `creative-plan.md`.
+
 ## Included Inputs
 
 - `inputs/brand/brand.md` — brand positioning, voice, visual world, logo rules,
