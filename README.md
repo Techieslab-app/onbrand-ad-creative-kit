@@ -10,6 +10,7 @@ multiplied across angles and canvases by an image model.
 [Deploy in 5 minutes](#deploy-in-5-minutes) ·
 [What you need](#what-you-need-before-you-deploy) ·
 [The input contract](#the-input-contract) ·
+[Examples](#examples) ·
 [Seen in the wild](#seen-in-the-wild) ·
 [Techies Lab](https://techieslab.app/)
 
@@ -102,6 +103,8 @@ Then review against [`templates/qa-checklist.md`](templates/qa-checklist.md).
 
 > **Not sure where to start?** [`examples/foundersvn/`](examples/foundersvn/) is a complete real campaign — a private founders' dinner in Da Nang, bilingual VN/EN hooks, four ratios. Read it before you write your own.
 
+> **Want to see generated outputs first?** [`examples/lovable/`](examples/lovable/) is a public-brand simulation: lightweight Lovable inputs, six generated PNG ads, embedded previews, and QA notes about what stayed stable and what drifted.
+
 ## The input contract
 
 Six roles. The contract is the **roles**, not the exact paths — if your team already has a brand guide, map it to the closest role and keep your original file.
@@ -164,6 +167,13 @@ Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale
 
 **Automate to draft. Never automate to publish.**
 
+## Examples
+
+| Example | What to look at |
+|---|---|
+| [`examples/foundersvn/`](examples/foundersvn/) | A complete real campaign input set: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
+| [`examples/lovable/`](examples/lovable/) | A public-brand simulation with input brand files, embedded sample images, generated outputs, and QA notes. Good for checking whether the workflow feels stable before using your own brand. |
+
 ## Repo map
 
 ```text
@@ -179,6 +189,7 @@ templates/                    copy these into inputs/ to start a campaign
   imagegen-prompt-template.md the prompt shape the skill fills in
   qa-checklist.md             the human review pass
 examples/foundersvn/          a complete real campaign, bilingual VN/EN
+examples/lovable/             public-brand simulation with generated outputs
 scripts/validate_outputs.py   dimension + package validator, stdlib only
 inputs/                       your campaign goes here (gitignored)
 outputs/1x1 4x5 9x16 16x9     generated creatives, sorted by ratio
@@ -197,6 +208,7 @@ This kit is the tooling layer of a pattern Techies Lab keeps finding in teardown
 | [Codex for Marketing](https://techieslab.app/playbook-codex-marketing) | Where an agent like Codex actually fits in a marketing workflow, and where it does not. |
 | [once.film](https://techieslab.app/playbook-once-film) | Instagram-first placement — why the ratio set is a strategy decision, not an export setting. |
 | [`examples/foundersvn/`](examples/foundersvn/) | A real campaign run through this kit: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
+| [`examples/lovable/`](examples/lovable/) | A public-brand simulation showing the kit's draft quality, plus the exact place generated UI content still drifts without approved screenshots. |
 
 All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-playbooks)
 

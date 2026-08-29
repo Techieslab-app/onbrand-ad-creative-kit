@@ -1,0 +1,18 @@
+campaign: lovable-public-brand-test
+brand: Lovable
+ratios:
+  - 1x1
+  - 4x5
+  - 9x16
+output_count: 3
+required_copy_fields:
+  - headline
+  - support
+  - cta
+source_of_truth:
+  - inputs/brand/brand.md
+  - inputs/brand/tokens.json
+  - inputs/design-rules/rules.md
+  - inputs/hooks/hooks.csv
+  - inputs/media/lovable-opengraph.png
+notes: Public research bootstrap. Replace with approved Lovable materials for production use.
