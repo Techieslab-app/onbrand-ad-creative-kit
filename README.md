@@ -174,6 +174,20 @@ Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale
 | [`examples/foundersvn/`](examples/foundersvn/) | A complete real campaign input set: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
 | [`examples/lovable/`](examples/lovable/) | A public-brand simulation with input brand files, embedded sample images, generated outputs, and QA notes. Good for checking whether the workflow feels stable before using your own brand. |
 
+### Lovable output preview
+
+Public brand signals in, generated ad bundle out:
+
+![Lovable founder ad: Your idea can be an app today](examples/lovable/outputs/1x1/lovable-public-brand-test-l04-your-idea-can-be-an-app-today-1x1.png)
+
+![Lovable PM ad: Turn specs into working tools](examples/lovable/outputs/1x1/lovable-public-brand-test-l02-turn-specs-into-working-tools-1x1.png)
+
+![Lovable 4x5 portrait feed ad](examples/lovable/outputs/4x5/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-4x5.png)
+
+![Lovable 9x16 story ad](examples/lovable/outputs/9x16/lovable-public-brand-test-l01-build-your-app-by-chatting-with-ai-9x16.png)
+
+See the full demo, inputs, prompts, and QA notes in [`examples/lovable/`](examples/lovable/).
+
 ## Repo map
 
 ```text
