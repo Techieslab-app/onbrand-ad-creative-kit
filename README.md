@@ -229,7 +229,6 @@ templates/                    copy these into inputs/ to start a campaign
   ad-batch.yaml               batch settings: ratios, naming, offer
   imagegen-prompt-template.md the prompt shape the skill fills in
   qa-checklist.md             the human review pass
-examples/foundersvn/          a complete real campaign, bilingual VN/EN
 examples/lovable/             public-brand simulation with generated outputs
 scripts/validate_outputs.py   dimension + package validator, stdlib only
 inputs/                       your campaign goes here (gitignored)
