@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260" fill="none">
+  <rect width="900" height="260" rx="24" fill="#FCFBF8"/>
+  <text x="40" y="54" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Lovable input palette</text>
+  <g transform="translate(40 88)">
+    <rect width="116" height="116" rx="18" fill="#FCFBF8" stroke="#D8D5CF"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#FCFBF8</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">background</text>
+  </g>
+  <g transform="translate(178 88)">
+    <rect width="116" height="116" rx="18" fill="#272725"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#272725</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">text</text>
+  </g>
+  <g transform="translate(316 88)">
+    <rect width="116" height="116" rx="18" fill="#1E52F1"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#1E52F1</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">blue CTA</text>
+  </g>
+  <g transform="translate(454 88)">
+    <rect width="116" height="116" rx="18" fill="#F3702F"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#F3702F</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">coral</text>
+  </g>
+  <g transform="translate(592 88)">
+    <rect width="116" height="116" rx="18" fill="#EA8AAB"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#EA8AAB</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">pink</text>
+  </g>
+  <g transform="translate(730 88)">
+    <rect width="116" height="116" rx="18" fill="#FFFFFF" stroke="#D8D5CF"/>
+    <text x="0" y="148" fill="#272725" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">#FFFFFF</text>
+    <text x="0" y="174" fill="#6F6B65" font-family="Inter, Arial, sans-serif" font-size="16">surface</text>
+  </g>
+</svg>

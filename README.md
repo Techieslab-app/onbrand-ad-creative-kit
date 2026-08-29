@@ -179,38 +179,18 @@ Public brand signals in, generated ad bundle out.
 <table>
   <tr>
     <td width="38%">
-      <strong>Input logo / reference</strong><br />
+      <strong>Input logo</strong><br />
+      <sub><code>examples/lovable/inputs/media/lovable-icon.svg</code></sub><br /><br />
+      <img src="examples/lovable/inputs/media/lovable-icon.svg" alt="Lovable icon input" width="96" />
+      <br /><br />
+      <strong>Reference image</strong><br />
       <sub><code>examples/lovable/inputs/media/lovable-opengraph.png</code></sub><br /><br />
       <img src="examples/lovable/inputs/media/lovable-opengraph.png" alt="Lovable public brand reference input" />
     </td>
     <td width="62%">
-      <strong>Input brand tokens</strong><br /><br />
-      <table>
-        <tr>
-          <td><code>#FCFBF8</code><br /><sub>background</sub></td>
-          <td bgcolor="#FCFBF8" width="90"></td>
-        </tr>
-        <tr>
-          <td><code>#272725</code><br /><sub>text</sub></td>
-          <td bgcolor="#272725" width="90"></td>
-        </tr>
-        <tr>
-          <td><code>#1E52F1</code><br /><sub>primary blue / CTA</sub></td>
-          <td bgcolor="#1E52F1" width="90"></td>
-        </tr>
-        <tr>
-          <td><code>#F3702F</code><br /><sub>coral accent</sub></td>
-          <td bgcolor="#F3702F" width="90"></td>
-        </tr>
-        <tr>
-          <td><code>#EA8AAB</code><br /><sub>pink accent</sub></td>
-          <td bgcolor="#EA8AAB" width="90"></td>
-        </tr>
-        <tr>
-          <td><code>#FFFFFF</code><br /><sub>surface</sub></td>
-          <td bgcolor="#FFFFFF" width="90"></td>
-        </tr>
-      </table>
+      <strong>Input brand tokens</strong><br />
+      <sub><code>examples/lovable/inputs/media/lovable-palette.svg</code></sub><br /><br />
+      <img src="examples/lovable/inputs/media/lovable-palette.svg" alt="Lovable palette input: #FCFBF8, #272725, #1E52F1, #F3702F, #EA8AAB, #FFFFFF" />
       <br />
       <strong>Rules:</strong> friendly rounded sans, 0 letter spacing, clean product UI,
       chat-to-app transformation, warm light background, blue <code>Start building</code> CTA.

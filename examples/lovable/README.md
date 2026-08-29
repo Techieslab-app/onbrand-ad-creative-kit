@@ -25,20 +25,36 @@ behalf of Lovable without approval.
 - `inputs/hooks/hooks.csv` — the approved test hook.
 - `inputs/hooks/personas.md` — founder, product manager, and marketer persona
   notes.
+- `inputs/media/lovable-icon.svg` — Lovable icon input.
+- `inputs/media/lovable-palette.svg` — visual palette token board.
 - `inputs/media/lovable-opengraph.png` — public visual reference from the
   Lovable website.
 
 ## Input Snapshot
 
-| Input role | Demo value |
-|---|---|
-| Logo / reference | `inputs/media/lovable-opengraph.png` |
-| Colours | `#FCFBF8` background, `#272725` text, `#1E52F1` blue, `#F3702F` coral, `#EA8AAB` pink, `#FFFFFF` surfaces |
-| Type direction | friendly rounded geometric sans, 0 letter spacing, bold but not heavy headlines |
-| CTA | `Start building`, blue rounded rectangle, white text |
-| Visual world | clean product UI, chat-to-app transformation, warm light background, subtle shadows |
-| Hard avoids | robots, dark cyberpunk, fake code rain, crypto motifs, stock people, unrelated logos |
-| Product UI mode | draft generated UI; use approved screenshots for production |
+<table>
+  <tr>
+    <td width="38%">
+      <strong>Logo</strong><br />
+      <sub><code>inputs/media/lovable-icon.svg</code></sub><br /><br />
+      <img src="inputs/media/lovable-icon.svg" alt="Lovable icon input" width="96" />
+      <br /><br />
+      <strong>Reference image</strong><br />
+      <sub><code>inputs/media/lovable-opengraph.png</code></sub><br /><br />
+      <img src="inputs/media/lovable-opengraph.png" alt="Lovable public brand reference input" />
+    </td>
+    <td width="62%">
+      <strong>Palette</strong><br />
+      <sub><code>inputs/media/lovable-palette.svg</code></sub><br /><br />
+      <img src="inputs/media/lovable-palette.svg" alt="Lovable palette input: #FCFBF8, #272725, #1E52F1, #F3702F, #EA8AAB, #FFFFFF" />
+      <br />
+      <strong>Rules:</strong> friendly rounded sans, 0 letter spacing, clean product UI,
+      chat-to-app transformation, warm light background, blue <code>Start building</code> CTA.
+      Avoid robots, dark cyberpunk, fake code rain, crypto motifs, stock people, and unrelated logos.
+      Generated UI is draft-only unless approved screenshots are supplied.
+    </td>
+  </tr>
+</table>
 
 ## Included Outputs
 

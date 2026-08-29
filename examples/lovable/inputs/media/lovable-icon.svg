@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="38" viewBox="0 0 37 38" fill="none">
+  <clipPath id="lovable-icon-mask" clipPathUnits="userSpaceOnUse">
+    <path clip-rule="evenodd" d="M11.3017 0.696625C17.2674 0.696625 22.1034 5.54547 22.1034 11.5268V15.643H25.6983C31.6639 15.643 36.5 20.4918 36.5 26.4732C36.5 32.4545 31.6639 37.3034 25.6983 37.3034H0.5V11.5268C0.5 5.54547 5.3361 0.696625 11.3017 0.696625Z"/>
+  </clipPath>
+  <g clip-path="url(#lovable-icon-mask)">
+    <rect width="37" height="38" fill="url(#blue)"/>
+    <rect width="37" height="38" fill="url(#pink)"/>
+    <rect width="37" height="38" fill="url(#red)"/>
+    <rect width="37" height="38" fill="url(#orange)"/>
+  </g>
+  <defs>
+    <radialGradient id="blue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(42.38951 0 0 42.38951 16.2931 20.2368)">
+      <stop offset="0" stop-color="#4B73FF"/>
+      <stop offset="1" stop-color="#4B73FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pink" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(49.23061 0 0 42.38951 18.9662 6.86334)">
+      <stop offset="0" stop-color="#FF66F4"/>
+      <stop offset="1" stop-color="#FF66F4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="red" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(42.38951 0 0 39.42161 24.0617 2.27707)">
+      <stop offset="0" stop-color="#FF0105"/>
+      <stop offset="1" stop-color="#FF0105" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orange" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(32.67581 0 0 32.67581 19.4036 6.85751)">
+      <stop offset="0" stop-color="#FE7B02"/>
+      <stop offset="1" stop-color="#FE7B02" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
