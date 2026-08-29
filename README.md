@@ -1,83 +1,209 @@
+<div align="center">
+
 # OnBrand Ad Creative Kit
 
-A standardized package for turning brand inputs into on-brand ad creative batches across multiple ratios.
+**One brand system in. 150 on-brand ad creatives out. One run.**
 
-The intended workflow is:
+Not 150 ideas — one creative concept, locked to your brand system,
+multiplied across angles and canvases by an image model.
 
-```text
-brand system + design rules + hook list + reference images
--> ad creative recipe skill
--> 1:1, 4:5, 9:16, and optional 16:9 ad creatives
-```
+[Deploy in 5 minutes](#deploy-in-5-minutes) ·
+[What you need](#what-you-need-before-you-deploy) ·
+[The input contract](#the-input-contract) ·
+[Seen in the wild](#seen-in-the-wild) ·
+[Techies Lab](https://techieslab.app/)
 
-This repo is designed for Codex + an image generation model. It should not render final ad creatives with HTML, SVG, canvas, or code unless the user explicitly asks for a mockup. Final creative assets should be raster image outputs from an image generation model, then QA'd against the brand and layout rules.
+</div>
 
-## Inputs
+![How the kit works: three input files feed the ad-creative-recipe skill, which produces 150 on-brand creatives across 1:1, 4:5 and 9:16](docs/system-map.svg)
 
-Put campaign inputs in `inputs/` or copy from `templates/`:
+<sub>Interactive version: open [`docs/index.html`](docs/index.html) in a browser — same diagram, running.</sub>
 
-- `inputs/brand/brand.md` — brand system, voice, positioning, logo usage, typography direction.
-- `inputs/brand/tokens.json` — color, type, spacing, CTA, and logo token values.
-- `inputs/design-rules/rules.md` — layout rules, safe zones, visual do/don't list, platform constraints.
-- `inputs/hooks/hooks.csv` — personas, hooks, headlines, support copy, CTA, offer notes.
-- `inputs/hooks/personas.md` — persona notes and angle strategy.
-- `inputs/media/` — logos, approved image library, product shots, venue photos, brand references.
-- `inputs/ad-batch.yaml` — batch settings: ratios, output count, naming, offer, required copy fields.
+---
 
-## Outputs
+## Why this exists
 
-Generated files should be organized by ratio:
+Generating one ad with AI is easy. Generating **fifty** that a brand lead will actually sign off on is not — because every prompt drifts a little, and fifty small drifts is a batch nobody can ship.
 
-```text
-outputs/
-|-- 1x1/     1080 x 1080
-|-- 4x5/     1080 x 1350
-|-- 9x16/    1080 x 1920
-`-- 16x9/   1920 x 1080, optional
-```
+This kit removes the drift. You describe the brand once, in files. Every creative in every batch after that is generated from those same files, in the same order, by the same skill. The output stops depending on how you happened to phrase the prompt that day.
 
-The default package target is 3 ratios:
+**The unit of work becomes the batch, not the asset.**
 
-- square: `1:1`
-- portrait feed: `4:5`
-- vertical story/reel: `9:16`
+## What you actually get
 
-Optional:
+| | Without the kit | With the kit |
+|---|---|---|
+| **Prompt writing** | 150 prompts, hand-written | 1 CSV row per hook; prompts are generated |
+| **Brand consistency** | depends on the prompt you typed | locked to `tokens.json` + `brand.md`, every run |
+| **Ratios** | one design stretched to fit | ratio-specific layouts with real safe zones |
+| **Angle strategy** | whatever the model suggests | your personas and tested hooks, preserved |
+| **Naming** | `final_v3_REAL.png` | `{campaign}-{hook_id}-{slug}-{ratio}.png` |
+| **"Which angle won?"** | unanswerable | joinable — the hook id is in every filename |
+| **QA** | eyeball 150 files | a script checks dimensions; you check the 7 things it can't |
 
-- horizontal: `16:9`
+## What you need before you deploy
 
-## How To Use
+| Requirement | Why | Check |
+|---|---|---|
+| **Codex CLI** (or any agent that loads skills) | it reads the six inputs and writes the prompt plan | `codex --version` |
+| **An image generation model** | final assets are raster output, never HTML/SVG/canvas | your provider's API key |
+| **Python 3** | runs the output validator | `python3 --version` |
+| **Your brand files** | logo, colour/type tokens, design rules, hooks | see [the input contract](#the-input-contract) |
 
-1. Fill the files in `inputs/`.
-2. Ask Codex: `Use the ad-creative-recipe skill in this repo to generate a prompt plan for this batch.`
-3. Generate the ads with an image generation model.
-4. Save files under `outputs/<ratio>/`.
-5. Run:
+No dependencies to install. The validator uses the Python standard library only.
+
+## Deploy in 5 minutes
+
+**1. Clone**
 
 ```bash
-python3 scripts/validate_outputs.py outputs
+git clone https://github.com/Techieslab-app/onbrand-ad-creative-kit.git
+cd onbrand-ad-creative-kit
 ```
 
-6. Review with `templates/qa-checklist.md`.
-
-## Package Design
-
-The package standardizes three things:
-
-- **Brand lock:** the generated creative follows the supplied brand system, logo, palette, typography, and voice.
-- **Layout lock:** each ratio uses safe-zone-aware composition rules, so headlines, CTAs, and mandatory details do not get cropped or covered.
-- **Angle lock:** hooks are generated from personas and campaign strategy, not random generic ad copy.
-
-## Example
-
-`examples/foundersvn/` contains a sample campaign based on the FoundersVN dinner ads system. It is a reference example, not a hard-coded requirement for other brands.
-
-## Skill Install
-
-To install the reusable Codex skill locally:
+**2. Install the skill once, use it in any project**
 
 ```bash
 cp -R skill/ad-creative-recipe ~/.codex/skills/
 ```
 
-Then invoke it in any project that follows this input contract.
+**3. Fill the inputs** — copy the templates, then replace the placeholder content with yours
+
+```bash
+mkdir -p inputs/brand inputs/design-rules inputs/hooks inputs/media
+cp templates/brand.md          inputs/brand/brand.md
+cp templates/tokens.json       inputs/brand/tokens.json
+cp templates/design-rules.md   inputs/design-rules/rules.md
+cp templates/hooks.csv         inputs/hooks/hooks.csv
+cp templates/personas.md       inputs/hooks/personas.md
+cp templates/ad-batch.yaml     inputs/ad-batch.yaml
+# drop your logo files and approved reference photos into inputs/media/
+```
+
+**4. Ask for the plan, then generate**
+
+```text
+Use the ad-creative-recipe skill in this repo to generate a prompt plan for this batch.
+```
+
+You get one prompt per hook per ratio — each carrying the exact size, the exact copy, the approved logo path, the reference image, the brand constraints, the safe-zone rules, and the output filename. Generate the images, save them under `outputs/<ratio>/`.
+
+**5. Validate**
+
+```bash
+python3 scripts/validate_outputs.py outputs
+```
+
+```text
+Package validation passed. Checked 150 PNG output files.
+```
+
+Then review against [`templates/qa-checklist.md`](templates/qa-checklist.md).
+
+> **Not sure where to start?** [`examples/foundersvn/`](examples/foundersvn/) is a complete real campaign — a private founders' dinner in Da Nang, bilingual VN/EN hooks, four ratios. Read it before you write your own.
+
+## The input contract
+
+Six roles. The contract is the **roles**, not the exact paths — if your team already has a brand guide, map it to the closest role and keep your original file.
+
+| File | What it carries |
+|---|---|
+| `inputs/brand/brand.md` | brand narrative, audience, positioning, voice, logo rules, typography, hard avoids |
+| `inputs/brand/tokens.json` | machine-readable colours, type, CTA, logo, spacing, ratio tokens |
+| `inputs/design-rules/rules.md` | safe zones, composition rules, image-source rules, platform constraints |
+| `inputs/hooks/hooks.csv` | one row per angle: persona, headline, support, CTA, reference image, priority, status |
+| `inputs/hooks/personas.md` | who each angle is actually for |
+| `inputs/media/` | logo files and the approved reference image library |
+
+Full field-level schema: [`skill/ad-creative-recipe/references/input-contract.md`](skill/ad-creative-recipe/references/input-contract.md)
+
+## The batch formula
+
+```text
+personas × hooks per persona × ratios = total creatives
+
+5 personas × 10 hooks × 3 ratios = 150 creatives
+```
+
+Change one number and you know the size of the batch before you generate anything.
+
+| Ratio | Size | Placement |
+|---|---:|---|
+| `1x1` | 1080 × 1080 | square feed |
+| `4x5` | 1080 × 1350 | portrait feed |
+| `9x16` | 1080 × 1920 | stories / reels |
+| `16x9` | 1920 × 1080 | optional, horizontal |
+
+## The three locks
+
+This is why 150 assets still look like one brand. Take any lock away and the batch drifts.
+
+- **Brand lock** — logo comes from the approved files, colours from `tokens.json`, type and voice from `brand.md`, hard avoids respected.
+- **Layout lock** — each ratio gets its own composition with real safe zones. The same idea, adapted per canvas; never one design stretched across three.
+- **Angle lock** — hooks come from your personas and campaign strategy. The model polishes copy; it does not invent the strategy, and it does not flatten localised copy into translated English.
+
+## QA — the script's half and yours
+
+```bash
+python3 scripts/validate_outputs.py outputs
+```
+
+**The script checks:** every required package file is present; every PNG in `outputs/1x1`, `4x5`, `9x16`, `16x9` is exactly the size that ratio requires. It exits non-zero and lists each failure, so you can drop it into CI.
+
+**Only you can check:**
+
+- headline spelling — an image model will get it wrong eventually
+- logo accuracy — a reinvented logo looks right at a glance
+- palette drift — "close enough" is off-brand at scale
+- whether the claim in the ad is actually true
+- whether the persona/angle still makes sense for this audience
+- layout variety — 50 identical compositions is a failure, not a batch
+- likeness and consent for anyone in a reference photo
+
+Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale: [`skill/ad-creative-recipe/references/creative-qa.md`](skill/ad-creative-recipe/references/creative-qa.md)
+
+**Automate to draft. Never automate to publish.**
+
+## Repo map
+
+```text
+skill/ad-creative-recipe/     the skill itself — install this into ~/.codex/skills/
+  SKILL.md                    the workflow the agent follows
+  references/
+    input-contract.md         field-level schema for every input file
+    ratio-layouts.md          per-ratio safe zones and composition guidance
+    creative-qa.md            what "on-brand" means, concretely
+templates/                    copy these into inputs/ to start a campaign
+  brand.md  tokens.json  design-rules.md  hooks.csv  personas.md
+  ad-batch.yaml               batch settings: ratios, naming, offer
+  imagegen-prompt-template.md the prompt shape the skill fills in
+  qa-checklist.md             the human review pass
+examples/foundersvn/          a complete real campaign, bilingual VN/EN
+scripts/validate_outputs.py   dimension + package validator, stdlib only
+inputs/                       your campaign goes here (gitignored)
+outputs/1x1 4x5 9x16 16x9     generated creatives, sorted by ratio
+docs/system-map.svg           the animated system map above
+docs/index.html               the same thing, interactive
+```
+
+## Seen in the wild
+
+This kit is the tooling layer of a pattern Techies Lab keeps finding in teardowns of products that grow through paid and creator distribution: **fix the concept, vary the angle, batch the production, read the results by angle.**
+
+| Playbook | The part that shows up here |
+|---|---|
+| [The $20 Deposit Test — MyOtto](https://techieslab.app/playbook-myotto) | 107 Meta ads, six messaging angles, 22 dynamic creative variants in one batch. Angle-per-batch testing at production scale. |
+| [Shelf](https://techieslab.app/playbook-shelf) | Eight ambassador accounts on one audience, each running a different angle on the same product truth — the angle lock, applied to seeding. |
+| [Codex for Marketing](https://techieslab.app/playbook-codex-marketing) | Where an agent like Codex actually fits in a marketing workflow, and where it does not. |
+| [once.film](https://techieslab.app/playbook-once-film) | Instagram-first placement — why the ratio set is a strategy decision, not an export setting. |
+| [`examples/foundersvn/`](examples/foundersvn/) | A real campaign run through this kit: private founders' dinner, Da Nang, VN + EN hooks, four ratios. |
+
+All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-playbooks)
+
+## About Techies Lab
+
+[Techies Lab](https://techieslab.app/) is an AI-native marketing consultancy — consultancy, tooling, and execution — for product-led teams who want less repetitive marketing work and more leverage. This repo is one of the tooling pieces, published as-is.
+
+**Join the community:** [techieslab.app/community](https://techieslab.app/community#community)
+
+Questions or a campaign you want run: `yolo@techieslab.app`

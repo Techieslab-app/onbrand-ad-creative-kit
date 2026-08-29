@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OnBrand Ad Creative Kit — how one run becomes 150 creatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#18181B;
+  --ink2:#71717A;
+  --line:#D4D4D8;
+  --accent:#BE185D;
+  --frame:#EDEEF0;
+  --bar:#9CA3AF;
+  --mini:#DFE2E7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);overflow:hidden}
+body{font-family:"Inter",ui-sans-serif,-apple-system,"Helvetica Neue",Arial,sans-serif;
+     color:var(--ink);font-weight:500;-webkit-font-smoothing:antialiased}
+
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;
+       transform-origin:center center;transform:translate(-50%,-50%);background:var(--bg)}
+svg.d{position:absolute;inset:0;width:1600px;height:900px;overflow:visible}
+
+.st{fill:var(--ink);font-size:44px;font-weight:400;letter-spacing:-.02em;opacity:0;
+    transition:opacity .7s ease}
+.st.on{opacity:1}
+
+/* input cards */
+.card{opacity:0;transition:opacity .55s ease,transform .55s cubic-bezier(.2,0,.2,1);
+      transform:translateX(-16px)}
+.card.on{opacity:1;transform:none}
+.card rect.box{fill:var(--bg);stroke:var(--line);stroke-width:1.5px}
+.card .ct{fill:var(--ink);font-size:16px;font-weight:700;letter-spacing:.05em}
+.card .cf{fill:var(--accent);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
+          font-size:13.5px;font-weight:500}
+.card .cl{fill:var(--ink);font-size:14.5px;font-weight:400}
+
+/* wires + packets */
+.w{fill:none;stroke:var(--ink2);stroke-width:1.5px;opacity:0;
+   transition:opacity .35s ease,stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)}
+.w.on{opacity:.8;stroke-dashoffset:0 !important}
+.w.fan.on{opacity:.55}
+.pkt{fill:var(--ink);filter:drop-shadow(0 1px 4px rgba(24,24,27,.3))}
+.pkt.a{fill:var(--accent)}
+
+/* codex mark */
+.mark{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.86);
+      transition:opacity .6s ease,transform .6s cubic-bezier(.2,0,.2,1)}
+.mark.on{opacity:1;transform:none}
+.mark.beat{animation:beat 2.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.halo{fill:none;stroke:#818CF8;stroke-width:1.5px;opacity:0}
+.halo.go{animation:halo 2.6s ease-out infinite}
+@keyframes halo{0%{opacity:.5;transform:scale(.82)}100%{opacity:0;transform:scale(1.25)}}
+
+/* skill box */
+.skill{opacity:0;transition:opacity .55s ease}
+.skill.on{opacity:1}
+.skill rect{fill:var(--bg);stroke:var(--accent);stroke-width:1.5px;stroke-dasharray:6 5}
+.skill .sf{fill:var(--accent);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
+           font-size:15px;font-weight:500}
+.skill .sl{fill:var(--ink2);font-size:13.5px;font-weight:400}
+
+/* output */
+.rl{fill:var(--ink);font-size:16px;font-weight:700;letter-spacing:.05em;opacity:0;transition:opacity .5s ease}
+.rl.on{opacity:1}
+.rm{fill:var(--ink2);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:13.5px;
+    opacity:0;transition:opacity .5s ease}
+.rm.on{opacity:1}
+.hl{fill:var(--ink2);font-size:14px;font-weight:400;opacity:0;transition:opacity .5s ease}
+.hl.on{opacity:1}
+.mc{fill:var(--ink2);font-size:14px;font-weight:500;opacity:0;transition:opacity .5s ease}
+.mc.on{opacity:1}
+
+.frame{fill:var(--frame);stroke:#E4E4E7;stroke-width:1px;opacity:0;transition:opacity .4s ease}
+.frame.on{opacity:1}
+.bar{fill:var(--bar);opacity:0;transition:opacity .35s ease}
+.bar.on{opacity:1}
+.cta{fill:var(--accent);opacity:0;transition:opacity .35s ease}
+.cta.on{opacity:1}
+
+.mini{fill:var(--mini);opacity:0;transition:opacity .22s ease}
+.mini.on{opacity:1}
+.mbar{fill:#FFFFFF;opacity:0;transition:opacity .22s ease}
+.mbar.on{opacity:.85}
+
+/* counter */
+.big{fill:var(--ink);font-size:52px;font-weight:700;letter-spacing:-.03em;opacity:0;
+     transition:opacity .4s ease}
+.big.on{opacity:1}
+.bigl{fill:var(--ink2);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      opacity:0;transition:opacity .4s ease}
+.bigl.on{opacity:1}
+
+/* footer */
+.note{fill:var(--ink);font-size:14.5px;font-weight:400;opacity:0;transition:opacity .6s ease}
+.note.on{opacity:1}
+.rule{stroke:var(--line);stroke-width:1px;opacity:0;transition:opacity .6s ease}
+.rule.on{opacity:.9}
+.fx{fill:var(--ink);font-size:18px;font-weight:400;opacity:0;transition:opacity .5s ease}
+.fx.on{opacity:1}
+.fx tspan.k{fill:var(--accent);font-weight:700}
+.fx tspan.b{font-weight:700}
+.repo{fill:var(--ink2);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12.5px;opacity:0;transition:opacity .5s ease}
+.repo.on{opacity:.8}
+
+#chrome{position:fixed;left:0;right:0;bottom:0;padding:15px 26px 17px;display:flex;gap:20px;
+  align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);background:linear-gradient(to top,rgba(255,255,255,.95),rgba(255,255,255,0));
+  transition:opacity .3s}
+#chrome.hide{opacity:0;pointer-events:none}
+#keys{margin-left:auto;opacity:.75;font-weight:500;letter-spacing:.05em;text-transform:none;font-size:12px}
+#bar{position:fixed;left:0;top:0;height:2px;background:var(--ink);width:0;opacity:.45;transition:width .12s linear}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#71717A"/></marker>
+  <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#BE185D"/></marker>
+</defs></svg>
+
+<div id="bar"></div>
+<div id="wrap"><div id="stage">
+<svg class="d" viewBox="0 0 1600 900">
+
+  <text class="st t-in"  x="130" y="118">input</text>
+  <text class="st t-out" x="884" y="118">output — ads creatives</text>
+
+  <text class="big cnt"  x="1520" y="120" text-anchor="end">0</text>
+  <text class="bigl cntl" x="1520" y="146" text-anchor="end">creatives · one run</text>
+
+  <!-- ══ input cards ══ -->
+  <g class="card c1">
+    <rect class="box" x="130" y="170" width="340" height="140" rx="2"/>
+    <text class="ct" x="154" y="203">BRAND SYSTEM</text>
+    <text class="cf" x="154" y="229">logo.svg · brand.md</text>
+    <text class="cl" x="154" y="258">Logo and wordmark files</text>
+    <text class="cl" x="154" y="280">Colour and type tokens</text>
+    <text class="cl" x="154" y="302">Tagline and voice notes</text>
+  </g>
+  <g class="card c2">
+    <rect class="box" x="130" y="332" width="340" height="172" rx="2"/>
+    <text class="ct" x="154" y="365">DESIGN RULES</text>
+    <text class="cf" x="154" y="391">rules.md</text>
+    <text class="cl" x="154" y="420">Heading sits in the centre band</text>
+    <text class="cl" x="154" y="442">Logo lockup position is fixed</text>
+    <text class="cl" x="154" y="464">Images only from the approved</text>
+    <text class="cl" x="154" y="486">reference library</text>
+  </g>
+  <g class="card c3">
+    <rect class="box" x="130" y="526" width="340" height="150" rx="2"/>
+    <text class="ct" x="154" y="559">HOOK LIST</text>
+    <text class="cf" x="154" y="585">hooks.csv · hooks.md</text>
+    <text class="cl" x="154" y="614">Persona 1 through persona 5</text>
+    <text class="cl" x="154" y="636">10 tested hooks per persona</text>
+    <text class="cl" x="154" y="658">50 headings in total</text>
+  </g>
+
+  <path class="w i1" d="M470,240 C548,240 562,348 620,382" marker-end="url(#a)"/>
+  <path class="w i2" d="M470,418 C544,418 560,408 620,405" marker-end="url(#a)"/>
+  <path class="w i3" d="M470,600 C548,600 562,462 620,428" marker-end="url(#a)"/>
+
+  <!-- ══ codex ══ -->
+  <circle class="halo" cx="700" cy="404" r="86"/>
+  <g class="mark">
+    <image x="622" y="326" width="156" height="156" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAKACAMAAAA7EzkRAAAAxlBMVEVMaXH////////////////////////4+f/////////////////////////////////////////s7f+vtv////+Anv96nP+En/92mP99nv+gpP+Rof+MoP+Uov+JoP9XbP9bcf+Xov+co/9zk/9UZ/+jpf+Pof9edf9xkP+Zo/9ujP+Gn/9RY/9mgf9hev9phf9sif9HVP9EUP9jff9PYP+mpv9geP9LW/+up/9JWP9ATP+qpv+opf88Rf9NXf/k6P+7w//R1v/QoPLFAAAAFHRSTlMAKZbBrDyD/NsRXURvd2ZOV0ij1YKcr9sAAAAJcEhZcwAACxMAAAsTAQCanBgAABxaSURBVHja7Z0LWxO7FkBHXqGIr+8LgsjjtAgiFSnWwR7x3CT//0/dAiLl1abtTHaSWWs4XI/ngpis7p29J80URShay2vrKwtLi6urq0opDZExnJTh1CwuLaysry23ioxoLa8vLK4yw2mxuriwnr6HrXcrS6iXsoZLK+9StbC1toB7eVi4sJachMsri0xcXhK+TCj0LVFj5FilLKUQCFtvsC9jYnfwJfblHwejzcWtVxQdzVgPrryIMvgxMw1KxbGFwTcUvU0Lg2vkXpBVcD2OgqS1jn5NLUhWIlDwNfo1WcFXLfQD0UT8WrLyRT/Qi8tSiz8aL3DTlBHpC64w8PC3Ggm/3YXsC6NLwbCd6dYCQw73WQhYD78j/IFgEGT1B4JB8AXhD54LggHK4XV2/MHz5fA6vT8QZalF+oVc0/Ab0i9MTsNvqX5BlJrui7D8A9+FYB3lB5vuwZvFFuUH5FSKvKD8AEEDl/EPpi2Gl/EPRA2sbHPCO/yDWQx8V5F/DCXMxjvyL6SehfEPJCsR+i8wl4Ev8A90sv3AFvc/YF4D57krx/1fmJtF9r+ATnJvDPv/QAvuD3zDyEE1vKUAhtSaMRTAIFoKU4CAZCGyzphBlayzAISEloEsAKHqZeA0/nH8H1TOAltQQZSXdGAgiV4MCRgkk/AyIwX1sEwFDNFXwuyBAS24L+YFowRasB3NPWDQgveEXzJGIFmHUIGAFnyHyGtGCOrlNQEQdKytGHYBghbcGchNYBC9JfyK0QHBENhiGzRIhkACIIiGQFaAIFkIrzEyoAVPSuAo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"/>
+  </g>
+
+  <g class="skill">
+    <rect x="577" y="566" width="246" height="90" rx="3"/>
+    <text class="sf" x="700" y="604" text-anchor="middle">skill.md</text>
+    <text class="sl" x="700" y="630" text-anchor="middle">the ad-creative recipe</text>
+  </g>
+  <path class="w sk" d="M700,566 V500" marker-end="url(#aA)" style="stroke:#BE185D"/>
+
+  <!-- ══ fan-out to the three sizes ══ -->
+  <path class="w fan f1" d="M778,388 C824,388 830,250 872,250" marker-end="url(#a)"/>
+  <path class="w fan f2" d="M778,404 C824,404 830,484 872,484" marker-end="url(#a)"/>
+  <path class="w fan f3" d="M778,420 C824,420 830,700 872,700" marker-end="url(#a)"/>
+
+  <g class="rows"></g>
+
+  <text class="note n1" x="1370" y="660">Every frame carries the</text>
+  <text class="note n2" x="1370" y="682">same lockup: centred</text>
+  <text class="note n3" x="1370" y="704">heading band, fixed logo,</text>
+  <text class="note n4" x="1370" y="726">library image only.</text>
+
+  <line class="rule" x1="130" y1="760" x2="840" y2="760"/>
+  <text class="repo" x="130" y="836">github.com/Techieslab-app/onbrand-ad-creative-kit</text>
+  <text class="fx" x="130" y="796"><tspan class="k">5</tspan> personas × <tspan class="k">10</tspan> hooks each = <tspan class="k">50</tspan> headings × <tspan class="k">3</tspan> sizes = <tspan class="b">150 creatives</tspan> from one run</text>
+</svg>
+</div></div>
+
+<div id="chrome">
+  <div id="state">playing · looping</div>
+  <div id="keys">space pause · R replay · H hide UI · F fullscreen</div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const stage = document.getElementById('stage');
+  const fit = () => {
+    const s = Math.min(innerWidth / 1600, innerHeight / 900);
+    stage.style.transform = `translate(-50%,-50%) scale(${s})`;
+  };
+  addEventListener('resize', fit); fit();
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const svg = document.querySelector('svg.d');
+  const rowsG = document.querySelector('.rows');
+
+  /* ---------- output rows ---------- */
+  const ROWS = [
+    { k: 'r1', name: 'SQUARE',   meta: '1 : 1 · 1080×1080 · 50 creatives',
+      ly: 186, ty: 206, w: 120, h: 120, gap: 136,
+      sx: 1240, sy: 236, mw: 12, mh: 12, gx: 15, gy: 15, cy: 330 },
+    { k: 'r2', name: 'PORTRAIT', meta: '4 : 5 · 1080×1350 · 50 creatives',
+      ly: 396, ty: 416, w: 112, h: 140, gap: 128,
+      sx: 1200, sy: 458, mw: 11, mh: 14, gx: 14, gy: 17, cy: 548 },
+    { k: 'r3', name: 'STORY',    meta: '9 : 16 · 1080×1920 · 50 creatives',
+      ly: 606, ty: 626, w: 96,  h: 170, gap: 112,
+      sx: 1160, sy: 672, mw: 9,  mh: 16, gx: 12, gy: 19, cy: 770 }
+  ];
+
+  // one wireframe ad: grey canvas, two heading bars, a CTA chip
+  const thumb = (cls, x, y, w, h, v) => {
+    rowsG.appendChild(mk('rect', { class: 'frame ' + cls, x, y, width: w, height: h, rx: 2 }));
+    rowsG.appendChild(mk('rect', { class: 'bar ' + cls, x: x + w * .13, y: y + h * .46,
+      width: w * (v ? .62 : .70), height: Math.max(6, Math.round(h * .055)), rx: 1 }));
+    rowsG.appendChild(mk('rect', { class: 'bar ' + cls, x: x + w * (v ? .19 : .21), y: y + h * .59,
+      width: w * (v ? .58 : .50), height: Math.max(5, Math.round(h * .045)), rx: 1 }));
+    rowsG.appendChild(mk('rect', { class: 'cta ' + cls, x: x + w * .10, y: y + h * .77,
+      width: w * .23, height: Math.max(8, Math.round(h * .075)), rx: 1.5 }));
+  };
+  const label = (cls, x, y, s, kind, anchor) => {
+    const t = mk('text', { class: kind + ' ' + cls, x, y });
+    if (anchor) t.setAttribute('text-anchor', anchor);
+    t.textContent = s; rowsG.appendChild(t);
+  };
+
+  ROWS.forEach(r => {
+    label(r.k, 884, r.ly, r.name, 'rl');
+    label(r.k, 1076, r.ly, r.meta, 'rm');
+    thumb(r.k + ' h1', 884, r.ty, r.w, r.h, 0);
+    thumb(r.k + ' h2', 884 + r.gap, r.ty, r.w, r.h, 1);
+    label(r.k, 884, r.ty + r.h + 22, 'H1', 'hl');
+    label(r.k, 884 + r.gap, r.ty + r.h + 22, 'H2', 'hl');
+    // the other 48 — a contact sheet, so the scale is something you can see
+    for (let i = 0; i < 48; i++) {
+      const c = i % 12, rr = (i / 12) | 0;
+      const x = r.sx + c * r.gx, y = r.sy + rr * r.gy;
+      rowsG.appendChild(mk('rect', { class: 'mini ' + r.k + ' m' + i, x, y, width: r.mw, height: r.mh, rx: 1 }));
+      rowsG.appendChild(mk('rect', { class: 'mbar ' + r.k + ' m' + i,
+        x: x + r.mw * .18, y: y + r.mh * .45, width: r.mw * .64, height: 1.6, rx: .8 }));
+    }
+    label(r.k, r.sx, r.cy, '+ 48 more, same lockup', 'mc');
+  });
+
+  document.querySelectorAll('path.w').forEach(p => {
+    const L = p.getTotalLength() || 1;
+    p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+  });
+
+  /* ---------- engine ---------- */
+  const DUR = 19500;
+  const clock = { t: 0, paused: false };
+  let beats = [], packets = [], applied = [];
+  const at = (ms, fn) => beats.push({ ms, fn, done: false });
+  const on = (sel, cls = 'on') => document.querySelectorAll(sel).forEach(el => {
+    el.classList.add(cls); applied.push([el, cls]);
+  });
+  const pkt = (sel, o = {}) => {
+    const { dur = 1000, n = 1, gap = 200, r = 4.5, cls = '', delay = 0 } = o;
+    document.querySelectorAll(sel).forEach(path => {
+      const L = path.getTotalLength() || 1;
+      for (let i = 0; i < n; i++) {
+        const d = mk('circle', { class: 'pkt ' + cls, r, cx: -60, cy: -60 });
+        svg.appendChild(d);
+        packets.push({ path, el: d, L, dur, start: clock.t + delay + i * gap });
+      }
+    });
+  };
+  const move = () => {
+    for (let i = packets.length - 1; i >= 0; i--) {
+      const p = packets[i], e = clock.t - p.start;
+      if (e < 0) continue;
+      const u = e / p.dur;
+      if (u > 1) { p.el.remove(); packets.splice(i, 1); continue; }
+      const q = p.path.getPointAtLength(u * p.L);
+      p.el.setAttribute('cx', q.x); p.el.setAttribute('cy', q.y);
+    }
+  };
+  const count = n => { const e = document.querySelector('.cnt'); if (e) e.textContent = n; };
+
+  function run() {
+    at(150,  () => on('.t-in'));
+    at(500,  () => on('.c1'));
+    at(950,  () => on('.c2'));
+    at(1400, () => on('.c3'));
+
+    at(2100, () => on('.skill'));
+    at(2500, () => { on('.sk'); pkt('.sk', { dur: 600, cls: 'a' }); });
+    at(2950, () => on('.mark'));
+    at(3550, () => { on('.mark', 'beat'); on('.halo', 'go'); });
+
+    at(3300, () => { on('.i1'); pkt('.i1', { dur: 900 }); });
+    at(3600, () => { on('.i2'); pkt('.i2', { dur: 800 }); });
+    at(3900, () => { on('.i3'); pkt('.i3', { dur: 900 }); });
+
+    at(4700, () => on('.t-out'));
+    at(4900, () => { on('.f1'); pkt('.f1', { dur: 700 }); });
+    at(5050, () => { on('.f2'); pkt('.f2', { dur: 700 }); });
+    at(5200, () => { on('.f3'); pkt('.f3', { dur: 800 }); });
+    at(5300, () => { on('.cnt'); on('.cntl'); count(0); });
+
+    // the machine keeps running while the sheets fill
+    for (let t = 5400; t < 18700; t += 620)
+      at(t, () => pkt('.fan', { dur: 760, r: 3.6 }));
+
+    ROWS.forEach((r, i) => {
+      const t = 5600 + i * 2600;
+      at(t,        () => { on(`.${r.k}.rl`); on(`.${r.k}.rm`); });
+      at(t + 260,  () => on(`.frame.${r.k}.h1`));
+      at(t + 500,  () => { on(`.bar.${r.k}.h1`); on(`.hl.${r.k}`); });
+      at(t + 660,  () => { on(`.cta.${r.k}.h1`); count(i * 50 + 1); });
+      at(t + 860,  () => on(`.frame.${r.k}.h2`));
+      at(t + 1080, () => on(`.bar.${r.k}.h2`));
+      at(t + 1240, () => { on(`.cta.${r.k}.h2`); count(i * 50 + 2); });
+      // 48 tiles land fast — this is the beat that should feel like volume
+      for (let j = 0; j < 48; j++)
+        at(t + 1420 + j * 17, () => {
+          on(`.mini.${r.k}.m${j}`); on(`.mbar.${r.k}.m${j}`);
+          if (j % 4 === 3) count(i * 50 + 2 + j + 1);
+        });
+      at(t + 2280, () => { count((i + 1) * 50); on(`.mc.${r.k}`); });
+    });
+
+    at(12800, () => on('.n1'));
+    at(13000, () => on('.n2'));
+    at(13200, () => on('.n3'));
+    at(13400, () => on('.n4'));
+    at(13700, () => on('.rule'));
+    at(14000, () => { on('.fx'); on('.repo'); });
+    // the finished frame holds for ~5s before the loop restarts — that's the shot to grab
+    at(14800, () => { pkt('.i1,.i2,.i3', { dur: 900 }); pkt('.sk', { dur: 700, cls: 'a' }); });
+    at(16400, () => { pkt('.i1,.i2,.i3', { dur: 900 }); pkt('.sk', { dur: 700, cls: 'a' }); });
+    at(18000, () => { pkt('.i1,.i2,.i3', { dur: 900 }); pkt('.sk', { dur: 700, cls: 'a' }); });
+  }
+
+  function restart() {
+    packets.forEach(p => p.el.remove()); packets = []; beats = [];
+    applied.forEach(([el, c]) => el.classList.remove(c)); applied = [];
+    count(0); clock.t = 0; run();
+  }
+
+  const bar = document.getElementById('bar'), chrome = document.getElementById('chrome'),
+        stateEl = document.getElementById('state');
+  let last = performance.now();
+  (function frame(now) {
+    const dt = Math.min(64, now - last); last = now;
+    if (!clock.paused) {
+      clock.t += dt;
+      for (const b of beats) if (!b.done && clock.t >= b.ms) { b.done = true; b.fn(); }
+      bar.style.width = `${Math.min(100, clock.t / DUR * 100)}%`;
+      if (clock.t > DUR) restart();
+    }
+    move();
+    requestAnimationFrame(frame);
+  })(last);
+
+  addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (e.key === ' ') { clock.paused = !clock.paused;
+      stateEl.textContent = (clock.paused ? 'paused' : 'playing') + ' · looping'; e.preventDefault(); }
+    else if (k === 'r' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') restart();
+    else if (k === 'h') chrome.classList.toggle('hide');
+    else if (k === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+  addEventListener('click', e => { if (!e.target.closest('#chrome')) restart(); });
+
+  run();
+})();
+</script>
+</body>
+</html>
