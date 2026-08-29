@@ -25,9 +25,9 @@ body{font-family:"Inter",ui-sans-serif,-apple-system,"Helvetica Neue",Arial,sans
      color:var(--ink);font-weight:500;-webkit-font-smoothing:antialiased}
 
 #wrap{position:fixed;inset:0;overflow:hidden}
-#stage{position:absolute;left:50%;top:50%;width:1600px;height:1560px;
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:1060px;
        transform-origin:center center;transform:translate(-50%,-50%);background:var(--bg)}
-svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
+svg.d{position:absolute;inset:0;width:1600px;height:1060px;overflow:visible}
 
 .st{fill:var(--ink);font-size:44px;font-weight:400;letter-spacing:-.02em;opacity:0;
     transition:opacity .7s ease}
@@ -103,35 +103,6 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
 /* footer / notes */
 .note{fill:var(--ink);font-size:14.5px;font-weight:400;opacity:0;transition:opacity .6s ease}
 .note.on{opacity:1}
-.rule{stroke:var(--line);stroke-width:1px;opacity:0;transition:opacity .6s ease}
-.rule.on{opacity:.9}
-.repo{fill:var(--ink2);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12.5px;opacity:0;transition:opacity .5s ease}
-.repo.on{opacity:.8}
-
-/* QA verdict panel */
-.qk{fill:var(--ink2);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    opacity:0;transition:opacity .5s ease}
-.qk.on{opacity:1}
-.qtitle{fill:var(--ink);font-size:27px;font-weight:600;letter-spacing:-.015em;opacity:0;
-        transition:opacity .6s ease}
-.qtitle.on{opacity:1}
-.qh{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:0;
-    transition:opacity .5s ease}
-.qh.on{opacity:1}
-.qh.good{fill:var(--good)}
-.qh.warn{fill:var(--warn)}
-.qi{font-size:14.5px;font-weight:400;opacity:0;transition:opacity .45s ease}
-.qi.on{opacity:1}
-.qi tspan.g{fill:var(--good);font-weight:700}
-.qi tspan.dr{fill:var(--warn);font-weight:700}
-.qi tspan.b{font-weight:700}
-.qline{fill:var(--ink);font-size:15px;font-weight:500;opacity:0;transition:opacity .5s ease}
-.qline.on{opacity:1}
-.qcmd{fill:var(--ink2);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:13px;
-      opacity:0;transition:opacity .5s ease}
-.qcmd.on{opacity:1}
-.qcmd.ok{fill:var(--good)}
-
 #chrome{position:fixed;left:0;right:0;bottom:0;padding:15px 26px 17px;display:flex;gap:20px;
   align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink2);background:linear-gradient(to top,rgba(255,255,255,.95),rgba(255,255,255,0));
@@ -152,7 +123,7 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
 
 <div id="bar"></div>
 <div id="wrap"><div id="stage">
-<svg class="d" viewBox="0 0 1600 1560">
+<svg class="d" viewBox="0 0 1600 1060">
 
   <text class="st t-in"  x="130" y="118">input</text>
   <text class="st t-out" x="884" y="118">output — a real test run</text>
@@ -218,34 +189,6 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
   <text class="note n2" x="1325" y="250">Lovable lockup: logo top-left,</text>
   <text class="note n3" x="1325" y="272">brand palette, "Start building" CTA.</text>
 
-  <line class="rule" x1="130" y1="672" x2="1500" y2="672"/>
-  <text class="note nfx" x="130" y="705">4 headlines tested across 3 personas, all as 1x1 — then the one approved hook (L01) carried through 4:5 and 9:16 to prove the ratio adapts.</text>
-  <text class="repo" x="130" y="730">examples/lovable/ · Techies Lab</text>
-
-  <!-- ══ QA verdict panel ══ -->
-  <text class="qk qk1" x="130" y="1050">what the real run showed</text>
-  <text class="qtitle qt1" x="130" y="1088">Stable enough to explore. Not stable enough to ship.</text>
-
-  <text class="qh good qh1" x="130" y="1150">stable across all 6</text>
-  <text class="qi qi1" x="130" y="1184"><tspan class="g">✓</tspan> Logo — top-left, correct clearspace, never redrawn</text>
-  <text class="qi qi2" x="130" y="1214"><tspan class="g">✓</tspan> Palette — blue · coral · pink · warm background, held every time</text>
-  <text class="qi qi3" x="130" y="1244"><tspan class="g">✓</tspan> CTA — <tspan class="b">"Start building,"</tspan> same pill, every generation</text>
-  <text class="qi qi4" x="130" y="1274"><tspan class="g">✓</tspan> Copy — headline + support + CTA match the approved hook</text>
-  <text class="qi qi5" x="130" y="1304"><tspan class="g">✓</tspan> Composition — product-led SaaS polish, ratio adapts cleanly</text>
-
-  <text class="qh warn qh2" x="830" y="1150">drifted — every single time</text>
-  <text class="qi qi6" x="830" y="1184">1x1 · L01 — invented app <tspan class="dr">"Feedback Hub,"</tspan> a fake "Acme Inc."</text>
-  <text class="qi qi7" x="830" y="1214">4x5 · L01 — invented app <tspan class="dr">"Habit Tracker"</tspan></text>
-  <text class="qi qi8" x="830" y="1244">9x16 · L01 — invented app <tspan class="dr">"Trackly"</tspan> — the heaviest drift</text>
-  <text class="qi qi9" x="830" y="1274">1x1 · L03 — fictional <tspan class="dr">"Acme"</tspan> logos and dashboard copy</text>
-  <text class="qi qi10" x="830" y="1304">1x1 · L04 — invented app <tspan class="dr">"Launchpad"</tspan></text>
-
-  <text class="qline qline1" x="130" y="1358">None of that UI is a real Lovable screen — the model invents a plausible product every single generation.</text>
-  <text class="qline qline2" x="130" y="1386">For production: supply approved product screenshots in <tspan class="b">inputs/media/</tspan> and treat generated UI as draft-only.</text>
-
-  <line class="rule rule2" x1="130" y1="1418" x2="1500" y2="1418"/>
-  <text class="qcmd qcmd1" x="130" y="1450">$ python3 scripts/validate_outputs.py examples/lovable/outputs</text>
-  <text class="qcmd qcmd2 ok" x="130" y="1476">Package validation passed. Checked 6 PNG output files.</text>
 </svg>
 </div></div>
 
@@ -259,7 +202,7 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
   'use strict';
   const stage = document.getElementById('stage');
   const fit = () => {
-    const s = Math.min(innerWidth / 1600, innerHeight / 1560);
+    const s = Math.min(innerWidth / 1600, innerHeight / 1060);
     stage.style.transform = `translate(-50%,-50%) scale(${s})`;
   };
   addEventListener('resize', fit); fit();
@@ -320,7 +263,7 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
   });
 
   /* ---------- engine ---------- */
-  const DUR = 24500;
+  const DUR = 16000;
   const clock = { t: 0, paused: false };
   let beats = [], packets = [], applied = [];
   const at = (ms, fn) => beats.push({ ms, fn, done: false });
@@ -398,25 +341,10 @@ svg.d{position:absolute;inset:0;width:1600px;height:1560px;overflow:visible}
     at(11800, () => { on('.n1'); });
     at(12000, () => on('.n2'));
     at(12200, () => on('.n3'));
-    at(12600, () => on('.rule'));
-    at(12900, () => { on('.nfx'); on('.repo'); });
-
-    // ── the payoff: what actually held up vs what drifted ──
-    at(13800, () => on('.qk1'));
-    at(14100, () => on('.qt1'));
-    at(14900, () => on('.qh1'));
-    [1, 2, 3, 4, 5].forEach(i => at(15200 + (i - 1) * 300, () => on(`.qi${i}`)));
-    at(16900, () => on('.qh2'));
-    [6, 7, 8, 9, 10].forEach(i => at(17200 + (i - 6) * 300, () => on(`.qi${i}`)));
-    at(19000, () => on('.qline1'));
-    at(19700, () => on('.qline2'));
-    at(20500, () => on('.rule2'));
-    at(20800, () => on('.qcmd1'));
-    at(21200, () => on('.qcmd2'));
 
     // the finished frame holds for a few seconds before the loop restarts
-    at(22200, () => { pkt('.i1,.i2,.i3', { dur: 900 }); pkt('.sk', { dur: 700, cls: 'a' }); });
-    at(23600, () => pkt('.fan', { dur: 700, n: 2, gap: 160 }));
+    at(13200, () => { pkt('.i1,.i2,.i3', { dur: 900 }); pkt('.sk', { dur: 700, cls: 'a' }); });
+    at(14600, () => pkt('.fan', { dur: 700, n: 2, gap: 160 }));
   }
 
   function restart() {

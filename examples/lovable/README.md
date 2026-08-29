@@ -15,8 +15,9 @@ signals and are suitable for testing the workflow, not for production use on
 behalf of Lovable without approval.
 
 **Interactive walkthrough:** open [`walkthrough.html`](walkthrough.html) in a browser — the
-same input → skill → Codex pipeline as the main README, but animated with the real
-generated creatives below and the stable-vs-drifted verdict from `creative-plan.md`.
+same input → skill → Codex pipeline as the main README, but animated with the six
+real creatives below in place of wireframes. For the stable-vs-drifted verdict, see
+`creative-plan.md`.
 
 ## Included Inputs
 
