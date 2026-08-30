@@ -2,10 +2,9 @@
 
 # OnBrand Ad Creative Kit 👾
 
-**One brand system in. 150 on-brand ad creatives out. One Codex run.**
+**One brand system in. Bundle on-brand ad creatives out. One Codex run.**
 
-It's one creative concept multiplied across angles and canvases, not 150 separate
-ideas. The skill writes the prompt plan, and Codex renders it with its own image
+It's one creative concept multiplied across angles and canvases. The skill writes the prompt plan, and Codex renders it with its own image
 generation tool. You don't need a separate image-model account.
 
 [What you need](#what-you-need-before-you-deploy) ·
