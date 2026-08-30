@@ -4,10 +4,9 @@
 
 **One brand system in. 150 on-brand ad creatives out. One Codex run.**
 
-Not 150 ideas — one creative concept, locked to your brand system,
-multiplied across angles and canvases. The skill writes the prompt plan;
-Codex's own image generation tool renders it — there is no separate
-image-model account to wire up.
+It's one creative concept multiplied across angles and canvases, not 150 separate
+ideas. The skill writes the prompt plan, and Codex renders it with its own image
+generation tool. You don't need a separate image-model account.
 
 [What you need](#what-you-need-before-you-deploy) ·
 [Deploy in 5 minutes](#deploy-in-5-minutes) ·
@@ -22,37 +21,35 @@ image-model account to wire up.
 
 | Requirement | Why | Check |
 |---|---|---|
-| **Codex CLI**, with its image generation tool available | reads the six inputs, writes the prompt plan, and renders the creatives — one tool, not a separate image-model integration | `codex --version` |
+| **Codex CLI**, with its image generation tool available | reads the six inputs, writes the prompt plan, and renders the creatives. One tool, no separate image-model integration. | `codex --version` |
 | **Python 3** | runs the output validator | `python3 --version` |
 | **Your brand files** | logo, colour/type tokens, design rules, hooks | see [the input contract](#the-input-contract) |
 
-No other dependencies. The validator uses the Python standard library only.
+Nothing else to install. The validator only uses Python's standard library.
 
 ![How the kit works: three input files feed the ad-creative-recipe skill running in Codex, which writes a locked, ratio-aware prompt plan and renders it with Codex's own image generation tool into 150 on-brand ad creatives across 1:1, 4:5 and 9:16](docs/system-map.svg)
 
-<sub>Interactive version: open [`docs/index.html`](docs/index.html) in a browser — same diagram, running.</sub>
+<sub>Interactive version: open [`docs/index.html`](docs/index.html) in a browser. Same diagram, running.</sub>
 
 ---
 
 ## Why this exists
 
-Generating one ad with AI is easy. Generating **fifty** that a brand lead will actually sign off on is not — because every prompt drifts a little, and fifty small drifts is a batch nobody can ship.
+Generating one ad with AI is easy. Generating fifty that a brand lead will actually approve is harder. Every prompt drifts a little, and fifty small drifts add up to a batch you can't ship.
 
-This kit removes the drift. You describe the brand once, in files. Every creative in every batch after that is generated from those same files, in the same order, by the same skill, and rendered by Codex's own image generation tool. The output stops depending on how you happened to phrase the prompt that day.
-
-**The unit of work becomes the batch, not the asset.**
+This kit removes that drift. You describe the brand once, in files. Every creative after that comes from those same files, in the same order, through the same skill, rendered by Codex's own image generation tool. The output no longer depends on how you happened to phrase the prompt that day. You end up working in batches, not single assets.
 
 ## What you actually get
 
 | | Without the kit | With the kit |
 |---|---|---|
-| **Prompt writing** | 150 prompts, hand-written | 1 CSV row per hook; prompts are generated |
+| **Prompt writing** | 150 prompts, hand-written | 1 CSV row per hook, prompts generated |
 | **Brand consistency** | depends on the prompt you typed | locked to `tokens.json` + `brand.md`, every run |
 | **Ratios** | one design stretched to fit | ratio-specific layouts with real safe zones |
-| **Angle strategy** | whatever the model suggests | your personas and tested hooks, preserved |
+| **Angle strategy** | whatever the model suggests | your personas and tested hooks, kept |
 | **Naming** | `final_v3_REAL.png` | `{campaign}-{hook_id}-{slug}-{ratio}.png` |
-| **"Which angle won?"** | unanswerable | joinable — the hook id is in every filename |
-| **QA** | eyeball 150 files | a script checks dimensions; you check the 7 things it can't |
+| **"Which angle won?"** | you can't tell | you can, the hook id is in every filename |
+| **QA** | eyeball 150 files | a script checks dimensions, you check the 7 things it can't |
 
 ## Deploy in 5 minutes
 
@@ -69,7 +66,7 @@ cd onbrand-ad-creative-kit
 cp -R skill/ad-creative-recipe ~/.codex/skills/
 ```
 
-**3. Fill the inputs** — copy the templates, then replace the placeholder content with yours
+**3. Fill the inputs.** Copy the templates, then replace the placeholder content with yours.
 
 ```bash
 mkdir -p inputs/brand inputs/design-rules inputs/hooks inputs/media
@@ -82,15 +79,15 @@ cp templates/ad-batch.yaml     inputs/ad-batch.yaml
 # drop your logo files and approved reference photos into inputs/media/
 ```
 
-**4. Ask for the plan, then generate**
+**4. Ask for the plan, then generate.**
 
 ```text
 Use the ad-creative-recipe skill in this repo to generate a prompt plan for this batch.
 ```
 
-You get one prompt per hook per ratio — each carrying the exact size, the exact copy, the approved logo path, the reference image, the brand constraints, the safe-zone rules, and the output filename. Then ask Codex to render the plan — its image generation tool produces the PNGs — and save them under `outputs/<ratio>/`.
+You get one prompt per hook per ratio. Each one has the exact size, the exact copy, the approved logo path, the reference image, the brand constraints, the safe-zone rules, and the output filename. Ask Codex to render the plan next, its image generation tool produces the PNGs. Save them under `outputs/<ratio>/`.
 
-**5. Validate**
+**5. Validate.**
 
 ```bash
 python3 scripts/validate_outputs.py outputs
@@ -102,11 +99,11 @@ Package validation passed. Checked 150 PNG output files.
 
 Then review against [`templates/qa-checklist.md`](templates/qa-checklist.md).
 
-> **Not sure where to start?** [`examples/lovable/`](examples/lovable/) is a public-brand simulation: lightweight Lovable inputs, six generated PNG ads, embedded previews, and QA notes about what stayed stable and what drifted. Read it before you write your own.
+> **Not sure where to start?** [`examples/lovable/`](examples/lovable/) is a public-brand simulation: lightweight Lovable inputs, six generated PNG ads, embedded previews, and QA notes on what stayed stable and what drifted. Read it before you write your own.
 
 ## The input contract
 
-Six roles. The contract is the **roles**, not the exact paths — if your team already has a brand guide, map it to the closest role and keep your original file.
+Six roles. The contract is about the roles, not the exact file paths. If your team already has a brand guide, map it to the closest role and keep your original file.
 
 | File | What it carries |
 |---|---|
@@ -127,7 +124,7 @@ personas × hooks per persona × ratios = total creatives
 5 personas × 10 hooks × 3 ratios = 150 creatives
 ```
 
-Change one number and you know the size of the batch before you generate anything.
+Change one number and you know the batch size before you generate anything.
 
 | Ratio | Size | Placement |
 |---|---:|---|
@@ -138,43 +135,43 @@ Change one number and you know the size of the batch before you generate anythin
 
 ## The three locks
 
-This is why 150 assets still look like one brand. Take any lock away and the batch drifts.
+This is why 150 assets still read as one brand. Drop any lock and the batch drifts.
 
-- **Brand lock** — logo comes from the approved files, colours from `tokens.json`, type and voice from `brand.md`, hard avoids respected.
-- **Layout lock** — each ratio gets its own composition with real safe zones. The same idea, adapted per canvas; never one design stretched across three.
-- **Angle lock** — hooks come from your personas and campaign strategy. The model polishes copy; it does not invent the strategy, and it does not flatten localised copy into translated English.
+- **Brand lock.** Logo comes from the approved files, colours from `tokens.json`, type and voice from `brand.md`, hard avoids respected.
+- **Layout lock.** Each ratio gets its own composition with real safe zones. The idea stays the same, adapted per canvas. No design stretched across three ratios.
+- **Angle lock.** Hooks come from your personas and campaign strategy. The model can polish the copy, but it doesn't invent the strategy or flatten localised copy into translated English.
 
-## QA — the script's half and yours
+## QA: the script's half and yours
 
 ```bash
 python3 scripts/validate_outputs.py outputs
 ```
 
-**The script checks:** every required package file is present; every PNG in `outputs/1x1`, `4x5`, `9x16`, `16x9` is exactly the size that ratio requires. It exits non-zero and lists each failure, so you can drop it into CI.
+**The script checks:** every required package file is present, and every PNG in `outputs/1x1`, `4x5`, `9x16`, `16x9` is exactly the size that ratio requires. It exits non-zero and lists each failure, so you can drop it into CI.
 
 **Only you can check:**
 
-- headline spelling — an image model will get it wrong eventually
-- logo accuracy — a reinvented logo looks right at a glance
-- palette drift — "close enough" is off-brand at scale
+- headline spelling, an image model will get it wrong eventually
+- logo accuracy, a reinvented logo looks right at a glance
+- palette drift, "close enough" is off-brand at scale
 - whether the claim in the ad is actually true
 - whether the persona/angle still makes sense for this audience
-- layout variety — 50 identical compositions is a failure, not a batch
+- layout variety, 50 identical compositions is a failure, not a batch
 - likeness and consent for anyone in a reference photo
 
-Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md) · rationale: [`skill/ad-creative-recipe/references/creative-qa.md`](skill/ad-creative-recipe/references/creative-qa.md)
+Checklist: [`templates/qa-checklist.md`](templates/qa-checklist.md). Rationale: [`skill/ad-creative-recipe/references/creative-qa.md`](skill/ad-creative-recipe/references/creative-qa.md)
 
-**Automate to draft. Never automate to publish.**
+Automate to draft. Never automate to publish.
 
 ## Examples
 
 | Example | What to look at |
 |---|---|
-| [`examples/lovable/`](examples/lovable/) | A public-brand simulation with input brand files, embedded sample images, generated outputs, and QA notes. Good for checking whether the workflow feels stable before using your own brand. |
+| [`examples/lovable/`](examples/lovable/) | A public-brand simulation with input brand files, embedded sample images, generated outputs, and QA notes. Good for checking whether the workflow feels stable before you use your own brand. |
 
 ### Lovable output preview
 
-Public brand signals in, generated ad bundle out.
+Built from public Lovable brand signals: a logo, a reference image, a palette. The outputs below are what the kit generated from them.
 
 <table>
   <tr>
@@ -227,12 +224,12 @@ Public brand signals in, generated ad bundle out.
   </tr>
 </table>
 
-See the full demo, inputs, prompts, and QA notes in [`examples/lovable/`](examples/lovable/).
+Full demo, inputs, prompts, and QA notes: [`examples/lovable/`](examples/lovable/).
 
 ## Repo map
 
 ```text
-skill/ad-creative-recipe/     the skill itself — install this into ~/.codex/skills/
+skill/ad-creative-recipe/     the skill itself, install this into ~/.codex/skills/
   SKILL.md                    the workflow the agent follows
   references/
     input-contract.md         field-level schema for every input file
@@ -253,21 +250,21 @@ docs/index.html               the same thing, interactive
 
 ## Seen in the wild
 
-This kit is the tooling layer of a pattern Techies Lab keeps finding in teardowns of products that grow through paid and creator distribution: **fix the concept, vary the angle, batch the production, read the results by angle.**
+This kit is the tooling side of a pattern we keep seeing in Techies Lab teardowns of products that grow through paid and creator distribution: keep the concept fixed, vary the angle, batch the production, and read the results by angle.
 
 | Playbook | The part that shows up here |
 |---|---|
 | [The $20 Deposit Test — MyOtto](https://techieslab.app/playbook-myotto) | 107 Meta ads, six messaging angles, 22 dynamic creative variants in one batch. Angle-per-batch testing at production scale. |
-| [Shelf](https://techieslab.app/playbook-shelf) | Eight ambassador accounts on one audience, each running a different angle on the same product truth — the angle lock, applied to seeding. |
-| [Codex for Marketing](https://techieslab.app/playbook-codex-marketing) | Where an agent like Codex actually fits in a marketing workflow, and where it does not. |
-| [once.film](https://techieslab.app/playbook-once-film) | Instagram-first placement — why the ratio set is a strategy decision, not an export setting. |
-| [`examples/lovable/`](examples/lovable/) | A public-brand simulation showing the kit's draft quality, plus the exact place generated UI content still drifts without approved screenshots. |
+| [Shelf](https://techieslab.app/playbook-shelf) | Eight ambassador accounts on one audience, each running a different angle on the same product truth. That's the angle lock, applied to seeding. |
+| [Codex for Marketing](https://techieslab.app/playbook-codex-marketing) | Where an agent like Codex actually fits in a marketing workflow, and where it doesn't. |
+| [once.film](https://techieslab.app/playbook-once-film) | Instagram-first placement, and why the ratio set is a strategy decision, not just an export setting. |
+| [`examples/lovable/`](examples/lovable/) | A public-brand simulation showing the kit's draft quality, and exactly where generated UI content still drifts without approved screenshots. |
 
 All teardowns: [techieslab.app/market-playbooks](https://techieslab.app/market-playbooks)
 
 ## About Techies Lab
 
-[Techies Lab](https://techieslab.app/) started as a community — a cross-discipline tech community across Vietnam and SEA (finance, logistics, design, marketing, code), built on the idea that your background is an advantage, not a gap to close. The consultancy and tooling side, this repo included, grew out of that community rather than the other way around.
+[Techies Lab](https://techieslab.app/) started as a community: a cross-discipline tech community across Vietnam and SEA, spanning finance, logistics, design, marketing, and code. The idea behind it is that your background is an advantage, not something to work around. The consultancy and tooling side, this repo included, grew out of that community. It didn't start the other way around.
 
 **Join the community:** [Discord](https://discord.gg/q5qkMCAaet)
 
